@@ -32,16 +32,16 @@ int	find_option(char **tab)
 {
 	int	i;
 
-	i = 1;
-	if (!tab[0][0])
-		i++;
-	while (tab[i])
+	i = 0;
+	while (tab[i] && tab[i + 1])
 	{
-		if (ft_strchr(tab[i], '-') && is_full_of_n(tab[i]))
-			return (i);
+		if (!is_full_of_n(tab[i + 1]))
+			break ;
+		if (ft_strchr(tab[i + 1], '-') && is_full_of_n(tab[i + 1]))
+			return (i + 1);
 		i++;
 	}
-	return (0);
+	return (i);
 }
 
 int	n_case(t_struct *s)
@@ -61,9 +61,10 @@ int	n_case(t_struct *s)
 				printf("%s ", s->tab[i]);
 			else if ((i + 1) == j)
 				printf("%s", s->tab[i]);
-			i++;
+			if (s->tab[i + 1])
+				i++;
 		}
-		if (i != j)
+		if (i != j && s->tab[i])
 			printf("%s", s->tab[i]);
 	}
 	return (j);
