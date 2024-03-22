@@ -73,7 +73,7 @@ int	fill_cmd_tab(t_tokens **list, t_struct **s)
 int	do_exec(t_struct **s, t_file *file, int stat)
 {
 	if ((*s)->tab[0] && check_buildin(*s) == 0 && (*s)->count_pipes == 0)
-		return (execute_buildin_normal(*s));
+		return (execute_buildin_normal(*s, file));
 	stat = exec(*s, file);
 	(*s)->is_first = 0;
 	(*s)->counter++;

@@ -27,6 +27,7 @@ SRC_FILES = srcs/main/main.c \
 			srcs/expand/expand_get_values.c \
 			srcs/expand/expand_utils.c \
 			srcs/expand/expand.c \
+			srcs/execution/dup_and_close_normal.c \
 			srcs/execution/exec_path.c \
 			srcs/execution/exec.c \
 			srcs/execution/execute_helper.c \

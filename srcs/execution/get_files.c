@@ -73,9 +73,7 @@ int	do_files(t_file *f, t_struct *s)
 	}
 	try_dups(f, s);
 	if (s->tab && s->tab[0])
-	{
 		try_redirections(f, s);
-	}
 	else
 	{
 		if (s->here_doc_open)

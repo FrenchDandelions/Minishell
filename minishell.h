@@ -171,6 +171,10 @@ typedef struct s_struct
 	int					error_cd;
 	int					x_i;
 	int					x_j;
+	int					save_in;
+	int					save_out;
+	int					was_in;
+	int					was_out;
 }						t_struct;
 
 void					sig_int(int code);
@@ -310,7 +314,7 @@ int						epur_str(char *s1, t_struct **s, int *i);
 int						is_arg(int token);
 int						create_new_file(t_file *f, char *file, int type,
 							int token);
-int						execute_buildin_normal(t_struct *s);
+int						execute_buildin_normal(t_struct *s, t_file *file);
 int						check_buildin(t_struct *s);
 int						recursive_filler(t_struct **s, t_tokens **list,
 							t_file *file);
@@ -322,4 +326,7 @@ int						open_struct_file(char *s, int mode, t_struct *st);
 int						go_home(t_struct *s);
 int						parser(t_struct *s);
 int						parser_part_two(t_tokens *temp);
+void					dup_fds(t_struct *s);
+void					close_dup_fds(t_struct *s);
+
 #endif

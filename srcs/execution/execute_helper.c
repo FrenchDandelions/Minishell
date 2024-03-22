@@ -25,16 +25,19 @@ int	check_buildin(t_struct *s)
 	return (1);
 }
 
-int	execute_buildin_normal(t_struct *s)
+int	execute_buildin_normal(t_struct *s, t_file *file)
 {
+	dup_fds(s);
+	if (do_files(file, s))
+		return (close_dup_fds(s), s->exit_val = 1, NORMAL);
 	if (ft_strcmp(s->tab[0], "exit") == 0)
-		return (ft_exit(s), EXIT);
+		return (ft_exit(s), close_dup_fds(s), EXIT);
 	else if (ft_strcmp(s->tab[0], "export") == 0)
-		return (ft_export_notchild(s, s->dup_env), NORMAL);
+		return (ft_export_notchild(s, s->env), close_dup_fds(s), NORMAL);
 	else if (ft_strcmp(s->tab[0], "unset") == 0)
-		return (ft_unset(s, s->dup_env), NORMAL);
+		return (ft_unset(s, s->env), close_dup_fds(s), NORMAL);
 	else if (ft_strcmp(s->tab[0], "cd") == 0)
-		return (ft_cd(s), NORMAL);
+		return (ft_cd(s), close_dup_fds(s), NORMAL);
 	return (SUCCESS);
 }
 
