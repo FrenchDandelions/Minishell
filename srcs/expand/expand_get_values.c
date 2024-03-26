@@ -12,6 +12,13 @@
 
 #include "../../minishell.h"
 
+void	set_new_indexes(int *i, int *j, t_struct *s)
+{
+	s->i_n_quotes = 0;
+	get_indexes(&(*i), &(*j), s, 1);
+	get_indexes(&(*i), &(*j), s, 0);
+}
+
 void	add_to_buff(char *string, char *str, int *i, int *j)
 {
 	if (str[(*i)] && str[(*i)] != '$' && !is_quotes(str[(*i)]))
@@ -24,9 +31,9 @@ void	add_to_buff(char *string, char *str, int *i, int *j)
 
 void	get_indexes(int *i, int *j, t_struct *s, int try)
 {
+	s->i_n_quotes = 0;
 	if (try == 0)
 	{
-		s->i_n_quotes = 0;
 		s->x_i = *i;
 		s->x_j = *j;
 	}

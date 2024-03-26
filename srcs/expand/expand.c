@@ -25,7 +25,7 @@ void	expand_single(char *string, char *str, int *i, int *j)
 			(*i)++;
 			(*j)++;
 		}
-		if (str[(*i)] && !is_quotes(str[(*i)]))
+		if (str[(*i)])
 		{
 			ft_sprintf(string + (*j), "%c", str[(*i)]);
 			(*i)++;
@@ -108,7 +108,7 @@ int	expand_double(char **string, char *str, t_struct *s, char **env)
 				s->x_j++;
 			}
 		}
-		if (str[s->x_i] && !is_quotes(str[s->x_i]))
+		if (str[s->x_i])
 		{
 			ft_sprintf(*string + s->x_j, "%c", str[s->x_i]);
 			s->x_i++;
@@ -136,12 +136,10 @@ char	*expand(char *str, char **env, t_struct *s)
 		get_indexes(&i, &j, s, 0);
 		if (expand_double(&string, str, s, env) == ERR_MALLOC)
 			return (NULL);
-		get_indexes(&i, &j, s, 1);
-		get_indexes(&i, &j, s, 0);
+		set_new_indexes(&i, &j, s);
 		if (expand_dollars(&string, str, env, s) == ERR_MALLOC)
 			return (NULL);
-		get_indexes(&i, &j, s, 1);
-		get_indexes(&i, &j, s, 0);
+		set_new_indexes(&i, &j, s);
 		add_to_buff(string, str, &i, &j);
 	}
 	return (string);

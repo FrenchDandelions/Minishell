@@ -332,5 +332,6 @@ void					dup_fds(t_struct *s);
 void					close_dup_fds(t_struct *s);
 int						val_wait(t_struct *s, int *ret);
 void					path_not_found(t_struct *s, char *cmd);
+void					set_new_indexes(int *i, int *j, t_struct *s);
 
 #endif
