@@ -175,6 +175,7 @@ typedef struct s_struct
 	int					save_out;
 	int					was_in;
 	int					was_out;
+	int					nl;
 }						t_struct;
 
 void					sig_int(int code);
@@ -247,7 +248,7 @@ int						new_value(t_struct *s, int i, int j);
 int						export_value(t_struct *s, int i, int j);
 int						printf_and_exit_export(t_struct *s, int i);
 int						sort_and_print_env(char **env, int i, int j);
-void					handle_errno(t_struct *s);
+void					handle_errno(t_struct *s, char *path);
 void					exec_buildin(t_struct *s, char **env, int i, char *cmd);
 int						ft_is_buildin(char *s);
 void					exit_error(char *str);
@@ -328,5 +329,7 @@ int						parser(t_struct *s);
 int						parser_part_two(t_tokens *temp);
 void					dup_fds(t_struct *s);
 void					close_dup_fds(t_struct *s);
+int						val_wait(t_struct *s, int *ret);
+void					path_not_found(t_struct *s, char *cmd);
 
 #endif

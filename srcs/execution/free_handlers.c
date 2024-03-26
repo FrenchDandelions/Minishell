@@ -39,6 +39,8 @@ void	exit_error_array(char *str, t_struct *s, char *s1, int index)
 	else if (index == 1 && s1 && !s1[0])
 		ft_putstr_fd(s1, STDERR_FILENO);
 	ft_putendl_fd(str, STDERR_FILENO);
+	if (s1)
+		ft_memdel(s1);
 	if (index == 1)
 		free_all(s, 127);
 	free_all(s, -2);

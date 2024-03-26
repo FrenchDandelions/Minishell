@@ -23,7 +23,8 @@ void	flush_array(char **tab)
 		tab[i] = NULL;
 		i++;
 	}
-	free(tab);
+	if (tab)
+		free(tab);
 	tab = NULL;
 }
 
@@ -67,7 +68,7 @@ void	flush_files(t_file *file, t_struct *s)
 	int	i;
 
 	i = 0;
-	while (file->files[i] != NULL)
+	while (file->files && file->files[i] != NULL)
 	{
 		free(file->files[i]);
 		file->files[i] = NULL;
@@ -75,9 +76,12 @@ void	flush_files(t_file *file, t_struct *s)
 		file->token[i] = NOTHING;
 		i++;
 	}
-	free(file->files);
-	free(file->token);
-	free(file->modes);
+	if (file->files)
+		free(file->files);
+	if (file->token)
+		free(file->token);
+	if (file->modes)
+		free(file->modes);
 	s->infile = NULL;
 	s->outfile = NULL;
 	s->mode_in = NOTHING;

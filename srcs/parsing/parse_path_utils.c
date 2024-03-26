@@ -26,6 +26,14 @@ int	ft_strcmp2(char *s1, char *s2)
 	return (1);
 }
 
+void	path_not_found(t_struct *s, char *cmd)
+{
+	ft_putstr_fd("Minishell: ", STDERR_FILENO);
+	ft_putstr_fd(cmd, STDERR_FILENO);
+	ft_putstr_fd(": command not found", STDERR_FILENO);
+	free_all(s, 127);
+}
+
 char	*not_found(char *cmd, char **all_path, char *path, int *flag)
 {
 	if (path)
@@ -36,7 +44,7 @@ char	*not_found(char *cmd, char **all_path, char *path, int *flag)
 	ft_putstr_fd("Minishell: ", STDERR_FILENO);
 	ft_putstr_fd(cmd, STDERR_FILENO);
 	ft_putstr_fd(": command not found", STDERR_FILENO);
-	return (cmd);
+	return (ft_strdup(cmd));
 }
 
 char	*return_cmd(char *path, char **all_path, char *str)

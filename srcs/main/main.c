@@ -16,22 +16,14 @@ int	g_sig;
 
 int	wait_pid(t_struct *s)
 {
-	int	status;
 	int	ret;
 
-	while (errno != ECHILD)
+	ret = 0;
+	s->nl = 0;
+	while (1)
 	{
-		if (wait(&status) == s->pid)
-		{
-			if (WIFEXITED(status))
-				ret = WEXITSTATUS(status);
-			else
-				ret = 128 + WTERMSIG(status);
-			if (ret == 131)
-				ft_dprintf(2, "Quit (core dumped)\n");
-			else if (ret == 130)
-				ft_dprintf(2, "\n");
-		}
+		if (val_wait(s, &ret) == BREAK)
+			break ;
 	}
 	g_sig = 0;
 	return (ret);
@@ -104,8 +96,6 @@ int	main(int argc, char **argv, char **env)
 		return (ft_dprintf(STDERR_FILENO, "Wrong STDIN\n"), EXIT_FAILURE);
 	(void)argv;
 	(void)argc;
-	if (!env[0])
-		return (ft_dprintf(STDERR_FILENO, "No env detected\n"), 1);
 	s.exit_arg = 0;
 	s.string_error = NULL;
 	s.error_cd = 0;

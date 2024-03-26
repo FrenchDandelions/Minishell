@@ -135,5 +135,5 @@ int	execute(t_struct *s, t_tokens *list, int depth, int pipe)
 		if (list->next)
 			list = list->next;
 	}
-	return (SUCCESS);
+	return (flush_files(&file, s), SUCCESS);
 }

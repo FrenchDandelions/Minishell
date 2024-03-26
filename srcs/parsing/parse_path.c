@@ -14,10 +14,9 @@
 
 static char	*find_path(char **env, char *s)
 {
-	int		i;
-	char	*path;
-	int		k;
-	int		j;
+	int	i;
+	int	k;
+	int	j;
 
 	k = 0;
 	i = 0;
@@ -26,16 +25,9 @@ static char	*find_path(char **env, char *s)
 	j = 0;
 	if (env[i] == NULL)
 		return (ft_strdup("0"));
-	while (env[i][j] != '=')
+	while (env[i][j] && env[i][j] != '=')
 		j++;
-	path = (char *)malloc(sizeof(char) * (ft_strlen(env[i]) - j + 1));
-	while (env[i][j++] != '\0')
-	{
-		path[k] = env[i][j];
-		k++;
-	}
-	path[k] = '\0';
-	return (path);
+	return (ft_strdup(env[i] + j + 1));
 }
 
 static char	*check_access(char *path, char *cmd, int *flag)
@@ -71,7 +63,7 @@ static char	*last_check(char **all_path, char *cmd, int *flag, char *path)
 		free_array(all_path);
 	if (!all_path || *flag == 1)
 		return (NULL);
-	return (cmd);
+	return (ft_strdup(cmd));
 }
 
 char	*get_path(char *cmd, char **env, int *flag)
@@ -82,7 +74,7 @@ char	*get_path(char *cmd, char **env, int *flag)
 	char	*str;
 
 	if (ft_strchr(cmd, '/'))
-		return (cmd);
+		return (ft_strdup(cmd));
 	path = find_path(env, "PATH=");
 	if (!path)
 		return (NULL);

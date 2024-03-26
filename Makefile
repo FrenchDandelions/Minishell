@@ -11,6 +11,7 @@ SRC_FILES = srcs/main/main.c \
 			srcs/main/set_struct.c \
 			srcs/main/signals.c \
 			srcs/main/utils.c \
+			srcs/main/wait_utils.c \
 			srcs/parsing/first_checker.c \
 			srcs/parsing/ft_get_prototype_list.c \
 			srcs/parsing/get_env.c \

@@ -49,11 +49,13 @@ void	exec_buildin(t_struct *s, char **env, int i, char *cmd)
 		ft_exit(s);
 }
 
-void	handle_errno(t_struct *s)
+void	handle_errno(t_struct *s, char *path)
 {
 	int	err;
 
 	err = errno;
+	if (path)
+		ft_memdel(path);
 	if (err == EACCES)
 	{
 		perror(s->tab[0]);

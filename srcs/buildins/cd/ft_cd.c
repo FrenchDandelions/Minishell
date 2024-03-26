@@ -20,8 +20,16 @@ int	find_path_cd(t_struct *s)
 	check = 0;
 	if (!getcwd(pwd, PATH_MAX))
 		check = 1;
-	if (chdir(s->tab[1]))
-		return (free_error_cd(s, NULL));
+	if (s->tab[1][0])
+	{
+		if (chdir(s->tab[1]))
+			return (free_error_cd(s, NULL));
+	}
+	else
+	{
+		if (chdir("."))
+			return (free_error_cd(s, NULL));
+	}
 	if (change_paths(s, pwd, check) == ERR_MALLOC)
 		return (ft_dprintf(STDERR_FILENO, "Malloc\n"), free_cd(s, NULL), -2);
 	return (free_cd(s, NULL));

@@ -48,7 +48,7 @@ void	exec_normal(t_struct *s, char **env)
 		exit_error_array(": command not found\n", s, path, 1);
 	if (execve(path, s->tab, env) == -1)
 	{
-		handle_errno(s);
+		handle_errno(s, path);
 		ft_dprintf(2, "%s: command not found\n", s->tab[0]);
 		free_all(s, 127);
 	}
@@ -70,9 +70,9 @@ int	exec_path(t_struct *s, int index, int fake_env)
 	if (fake_env)
 	{
 		if (index == 1)
-			exec_buildin(s, s->dup_env, fake_env, cmd);
+			exec_buildin(s, s->env, fake_env, cmd);
 		else
-			exec_normal(s, s->dup_env);
+			exec_normal(s, s->env);
 	}
 	else
 	{
