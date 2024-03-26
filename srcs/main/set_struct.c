@@ -37,8 +37,6 @@ void	init_args(t_struct *s)
 void	init_minishell(t_struct *s)
 {
 	s->exit = 0;
-	s->exported = 0;
-	s->unsetted = 0;
 	s->bad_exit = 0;
 	s->is_first = 1;
 	s->is_last = 0;

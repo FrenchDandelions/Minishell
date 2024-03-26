@@ -115,17 +115,6 @@ typedef struct s_file
 	int					*token;
 }						t_file;
 
-typedef struct s_tree
-{
-	t_file				*file;
-	char				**cmd_tab;
-	char				*infile;
-	char				*outfile;
-	int					err_code;
-	struct s_tree		*right;
-	struct s_tree		*left;
-}						t_tree;
-
 typedef struct s_struct
 {
 	char				*str;
@@ -138,7 +127,6 @@ typedef struct s_struct
 	int					token_out;
 	int					exit;
 	char				*here_doc_file;
-	char				*delim;
 	char				**env;
 	int					pipe[2];
 	int					is_pipe;
@@ -166,15 +154,11 @@ typedef struct s_struct
 	char				*string_error;
 	int					bad_exit;
 	int					size_env;
-	int					exported;
-	int					unsetted;
 	int					error_cd;
 	int					x_i;
 	int					x_j;
 	int					save_in;
 	int					save_out;
-	int					was_in;
-	int					was_out;
 	int					i_n_quotes;
 	int					nl;
 }						t_struct;

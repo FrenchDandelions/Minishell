@@ -73,7 +73,6 @@ int	export_check_value(t_struct *s, int i)
 int	ft_export_notchild(t_struct *s, char **env)
 {
 	(void)env;
-	s->exported = 1;
 	if (!s->tab[1])
 		return (sort_and_print_env(s->env, 0, 0));
 	return (export_check_value(s, 1));
