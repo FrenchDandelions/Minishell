@@ -175,6 +175,7 @@ typedef struct s_struct
 	int					save_out;
 	int					was_in;
 	int					was_out;
+	int					i_n_quotes;
 	int					nl;
 }						t_struct;
 

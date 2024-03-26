@@ -26,6 +26,7 @@ void	get_indexes(int *i, int *j, t_struct *s, int try)
 {
 	if (try == 0)
 	{
+		s->i_n_quotes = 0;
 		s->x_i = *i;
 		s->x_j = *j;
 	}

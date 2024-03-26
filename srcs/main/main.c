@@ -99,6 +99,7 @@ int	main(int argc, char **argv, char **env)
 	s.exit_arg = 0;
 	s.string_error = NULL;
 	s.error_cd = 0;
+	s.i_n_quotes = 0;
 	if (init_env(&s, env) == ERR_MALLOC)
 		return (ERR_MALLOC);
 	set_val(&s, 0);

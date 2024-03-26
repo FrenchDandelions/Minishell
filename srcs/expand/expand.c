@@ -40,7 +40,7 @@ int	get_dups_values(char **dup, char **dup2, t_struct *s, char *str)
 
 	len = 0;
 	get_len_variable(str, &len, s);
-	if (len == 0)
+	if (len == 0 && s->i_n_quotes)
 	{
 		(*dup) = ft_strdup("");
 		if (!(*dup))
@@ -93,6 +93,7 @@ int	expand_double(char **string, char *str, t_struct *s, char **env)
 {
 	if (str[s->x_i] == '\"')
 	{
+		s->i_n_quotes = 1;
 		ft_sprintf(*string + s->x_j, "%c", str[s->x_i]);
 		s->x_i++;
 		s->x_j++;
