@@ -61,6 +61,10 @@ int	handle_close_heredoc(char *buf, char *str, int fd)
 int	join_and_add_to_buffer(char **str, char **buf)
 {
 	*str = ft_gnl_strjoin(*str, "\n", 1);
+	if (!*str && *buf)
+		return (free(buf), ERR_MALLOC);
+	else if (!*str && !*buf)
+		return (ERR_MALLOC);
 	if (add_to_buffer(&(*buf), *str) == ERR_MALLOC)
 		return (ERR_MALLOC);
 	free(*str);
