@@ -26,6 +26,7 @@ SRC_FILES = srcs/main/main.c \
 			srcs/parsing/tokenizer_utils.c \
 			srcs/parsing/tokenizer.c \
 			srcs/expand/expand_get_values.c \
+			srcs/expand/expand_heredoc.c \
 			srcs/expand/expand_utils.c \
 			srcs/expand/expand.c \
 			srcs/execution/dup_and_close_normal.c \

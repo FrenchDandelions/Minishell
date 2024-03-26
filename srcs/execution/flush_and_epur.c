@@ -41,9 +41,18 @@ int	epur_files(t_file *f, t_struct **s, int i)
 	}
 	else if (f->files[i] && f->modes[i] == TK_DLMTR)
 	{
-		dup = ft_strdup(f->files[i]);
-		if (!dup)
-			return (ERR_MALLOC);
+		if (f->token[i] == TK_DOUBLE || f->token[i] == TK_SINGLE)
+		{
+			dup = ft_strdup(f->files[i]);
+			if (!dup)
+				return (ERR_MALLOC);
+		}
+		else
+		{
+			dup = expand_heredoc(f->files[i], (*s)->env, *s);
+			if (!dup)
+				return (ERR_MALLOC);
+		}
 		f->files[i] = dup;
 	}
 	if (f->files[i] && f->files[i + 1])
