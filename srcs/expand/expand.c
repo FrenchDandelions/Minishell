@@ -40,7 +40,8 @@ int	get_dups_values(char **dup, char **dup2, t_struct *s, char *str)
 
 	len = 0;
 	get_len_variable(str, &len, s);
-	if (len == 0 && s->i_n_quotes)
+	if ((len == 0 && s->i_n_quotes) || (len == 0 && !str[s->x_i + 1]
+			&& !s->i_n_quotes))
 	{
 		(*dup) = ft_strdup("");
 		if (!(*dup))
