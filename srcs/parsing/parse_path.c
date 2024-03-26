@@ -15,10 +15,8 @@
 static char	*find_path(char **env, char *s)
 {
 	int	i;
-	int	k;
 	int	j;
 
-	k = 0;
 	i = 0;
 	while (ft_strcmp2(env[i], s) != 0 && env[i])
 		i++;
