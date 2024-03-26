@@ -87,7 +87,7 @@ int	open_heredoc(t_tokens **list, char *lim)
 		}
 		if (check_str(&str) == ERR_MALLOC)
 			return (close(fd), ERR_MALLOC);
-		if (ft_strncmp(str, lim, (int)ft_strlen(str)) == 0)
+		if (ft_strcmp(str, lim) == 0)
 			return (close(fd), end_heredoc(&(*list), buf, str));
 		if (join_and_add_to_buffer(&str, &buf) == ERR_MALLOC)
 			return (close(fd), ERR_MALLOC);
