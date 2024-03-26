@@ -87,7 +87,8 @@ int	prep_to_send_to_exec(t_struct *s, t_tokens *list, t_file *file, int depth)
 	int	status;
 
 	status = 0;
-	epur_commands(&s, file, 0);
+	if (epur_files(file, &s, 0) == ERR_MALLOC)
+		return (flush_files(file, s), flush_array(s->tab), ERR_MALLOC);
 	s->file = file;
 	s->is_pipe = 1;
 	if (list->token == TK_END)

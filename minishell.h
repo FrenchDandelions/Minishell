@@ -309,7 +309,6 @@ void					get_indexes(int *i, int *j, t_struct *s, int try);
 void					add_to_buff(char *string, char *str, int *i, int *j);
 void					flush_array(char **tab);
 int						epur_files(t_file *f, t_struct **s, int i);
-int						epur_commands(t_struct **s, t_file *f, int i);
 void					flush_files(t_file *file, t_struct *s);
 void					set_files(t_file *file);
 int						epur_str(char *s1, t_struct **s, int *i);
