@@ -82,7 +82,8 @@ int	export_value(t_struct *s, int i, int j)
 	}
 	free(s->env[j]);
 	s->env[j] = str;
-	s->exit_val = 0;
+	if (!s->exit_val)
+		s->exit_val = 0;
 	return (SUCCESS);
 }
 

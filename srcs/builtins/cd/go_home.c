@@ -32,6 +32,21 @@ char	*find_home_in_env(char **env, char *to_find)
 	return (ft_strdup(""));
 }
 
+static int	return_home_issue(t_struct *s, int check)
+{
+	if (check == 1)
+	{
+		ft_dprintf(STDERR_FILENO, "Minishell: cd: HOME not set\n");
+		s->exit_val = 1;
+	}
+	else
+	{
+		ft_dprintf(STDERR_FILENO, "Malloc\n");
+		s->exit_val = -2;
+	}
+	return (check);
+}
+
 int	go_home(t_struct *s)
 {
 	char	*home;
@@ -44,13 +59,13 @@ int	go_home(t_struct *s)
 	{
 		if (s->count_pipes)
 			return (ft_dprintf(STDERR_FILENO, "Malloc\n"), free_all(s, -2), -2);
-		return (ft_dprintf(STDERR_FILENO, "Malloc\n"), -2);
+		return (return_home_issue(s, -2));
 	}
 	if (!home[0])
 	{
 		if (s->count_pipes)
 			return (err_home(s, home));
-		return (ft_dprintf(STDERR_FILENO, "Minishell: cd: HOME not set\n"), 1);
+		return (return_home_issue(s, 1));
 	}
 	if (!getcwd(pwd, PATH_MAX))
 		check = 1;

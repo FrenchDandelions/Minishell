@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.h                                             :+:      :+:    :+:   */
+/*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thole <thole@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 12:44:35 by thole             #+#    #+#             */
-/*   Updated: 2024/02/04 12:44:37 by thole            ###   ########.fr       */
+/*   Updated: 2024/03/27 15:03:06 by aattali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -317,5 +317,6 @@ int						val_wait(t_struct *s, int *ret);
 void					path_not_found(t_struct *s, char *cmd);
 void					set_new_indexes(int *i, int *j, t_struct *s);
 char					*expand_heredoc(char *str, char **env, t_struct *s);
+int						expand_condition_value(t_struct *s, char *str, int len);
 
 #endif

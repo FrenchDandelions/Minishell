@@ -44,9 +44,11 @@ int	is_token(int token)
 int	parsing(t_struct *s)
 {
 	if (quote_checker(s->str) < SUCCESS)
-		return (printf("%s", ERR_QUOTES), free(s->str), CONTINUE);
+		return (printf("%s", ERR_QUOTES), free(s->str), s->exit_val = 2,
+			CONTINUE);
 	if (check_parenthesis(s->str) == ERR_PARS)
-		return (printf("%s", ERR_PTSES), free(s->str), CONTINUE);
+		return (printf("%s", ERR_PTSES), free(s->str), s->exit_val = 2,
+			CONTINUE);
 	if (ft_prototype_list(s) == ERR_MALLOC)
 		return (ft_dprintf(2, "Malloc\n"), free(s->str), s->exit_val = -2,
 			CONTINUE);

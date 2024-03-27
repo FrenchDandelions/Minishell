@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: thole <thole@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/09 13:15:13 by thole             #+#    #+#             */
-/*   Updated: 2024/03/09 13:15:15 by thole            ###   ########.fr       */
+/*   Created: 2024/03/09 13:15:13 by aattali             #+#    #+#           */
+/*   Updated: 2024/03/27 14:54:34 by andrew           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	exec_normal(t_struct *s, char **env)
 
 	i = 0;
 	if (!s->tab[0] || !s->tab[0][0])
-		exit_error_array(": command not found\n", s, NULL, 1);
+		exit_error_array("Minishell: : command not found", s, NULL, 1);
 	path = get_path(s->tab[0], env, &i);
 	if (path == NULL)
 		exit_error_array("malloc\n", s, path, 0);

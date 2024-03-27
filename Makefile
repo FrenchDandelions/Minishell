@@ -40,17 +40,17 @@ SRC_FILES = srcs/main/main.c \
 			srcs/execution/get_size_to_send.c \
 			srcs/execution/open_files.c \
 			srcs/execution/redirections.c \
-			srcs/buildins/cd/ft_cd.c \
-			srcs/buildins/cd/go_home.c \
-			srcs/buildins/cd/perror_cd.c \
-			srcs/buildins/echo/ft_echo.c \
-			srcs/buildins/env/ft_env.c \
-			srcs/buildins/exit/exit_utils.c \
-			srcs/buildins/exit/exit.c \
-			srcs/buildins/export/export_utils.c \
-			srcs/buildins/export/ft_export.c \
-			srcs/buildins/pwd/ft_pwd.c \
-			srcs/buildins/unset/ft_unset.c \
+			srcs/builtins/cd/ft_cd.c \
+			srcs/builtins/cd/go_home.c \
+			srcs/builtins/cd/perror_cd.c \
+			srcs/builtins/echo/ft_echo.c \
+			srcs/builtins/env/ft_env.c \
+			srcs/builtins/exit/exit_utils.c \
+			srcs/builtins/exit/exit.c \
+			srcs/builtins/export/export_utils.c \
+			srcs/builtins/export/ft_export.c \
+			srcs/builtins/pwd/ft_pwd.c \
+			srcs/builtins/unset/ft_unset.c \
 			srcs/free/free_main.c \
 			srcs/free/free.c \
 

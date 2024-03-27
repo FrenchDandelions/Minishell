@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   norm_expand.c                                      :+:      :+:    :+:   */
+/*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thole <thole@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aattali <aattali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/21 16:53:45 by thole             #+#    #+#             */
-/*   Updated: 2024/03/21 16:53:47 by thole            ###   ########.fr       */
+/*   Created: 2024/03/21 16:53:45 by aattali           #+#    #+#             */
+/*   Updated: 2024/03/27 14:58:49 by andrew           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ int	get_dups_values(char **dup, char **dup2, t_struct *s, char *str)
 
 	len = 0;
 	get_len_variable(str, &len, s);
-	if ((len == 0 && s->i_n_quotes) || (len == 0 && !str[s->x_i + 1]
-			&& !s->i_n_quotes))
+	if (expand_condition_value(s, str, len))
 	{
 		(*dup) = ft_strdup("");
 		if (!(*dup))

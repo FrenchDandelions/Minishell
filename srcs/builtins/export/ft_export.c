@@ -81,6 +81,7 @@ int	ft_export_notchild(t_struct *s, char **env)
 void	ft_export(t_struct *s, char **env)
 {
 	(void)env;
+	s->exit_val = 0;
 	if (!s->tab[1])
 		sort_and_print_env(s->env, 0, 0);
 	else

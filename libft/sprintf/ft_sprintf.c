@@ -6,19 +6,11 @@
 /*   By: thole <thole@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:51:16 by thole             #+#    #+#             */
-/*   Updated: 2024/01/06 16:38:41 by thole            ###   ########.fr       */
+/*   Updated: 2024/03/27 14:55:46 by andrew           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sprintf.h"
-
-typedef struct s_sprintf
-{
-	size_t	length;
-	size_t	pos;
-	size_t	i;
-	char	*string;
-}			t_sprintf;
 
 int	ft_getchar(int c, char **ch)
 {

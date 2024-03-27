@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thole <thole@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aattali <aattali@student.42.fr>             +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 16:34:31 by thole             #+#    #+#             */
-/*   Updated: 2024/03/22 16:34:32 by thole            ###   ########.fr       */
+/*   Created: 2024/03/22 16:34:31 by aattali             #+#    #+#           */
+/*   Updated: 2024/03/27 14:57:55 by andrew           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,26 +62,12 @@ int	is_alnum_undescore(int c)
 	return (0);
 }
 
-char	*find_in_path(char *needle, char **env, int len, t_struct *s)
+int	expand_condition_value(t_struct *s, char *str, int len)
 {
-	int		size;
-	int		i;
-	char	*str;
-
-	size = (int)ft_strlen(needle);
-	i = 0;
-	if (size == 1 && needle[0] == '?')
-		return (ft_itoa(s->exit_val));
-	while (env[i] && needle[0])
-	{
-		if (ft_strnstr(env[i], needle, size))
-		{
-			str = ft_strdup(env[i] + 1 + size);
-			return (str);
-		}
-		i++;
-	}
-	if (len == 0 && size == 0)
-		return (ft_strdup("$"));
-	return (ft_strdup(""));
+	if ((len == 0 && s->i_n_quotes))
+		return (1);
+	else if ((len == 0 && (!str[s->x_i] || !str[s->x_i + 1]) && !s->i_n_quotes)
+		|| (len == 0 && str[s->x_i] && str[s->x_i] == '$'))
+		return (1);
+	return (0);
 }

@@ -12,6 +12,30 @@
 
 #include "../../minishell.h"
 
+char	*find_in_path(char *needle, char **env, int len, t_struct *s)
+{
+	int		size;
+	int		i;
+	char	*str;
+
+	size = (int)ft_strlen(needle);
+	i = 0;
+	if (size == 1 && needle[0] == '?')
+		return (ft_itoa(s->exit_val));
+	while (env[i] && needle[0])
+	{
+		if (ft_strnstr(env[i], needle, size))
+		{
+			str = ft_strdup(env[i] + 1 + size);
+			return (str);
+		}
+		i++;
+	}
+	if (len == 0 && size == 0)
+		return (ft_strdup("$"));
+	return (ft_strdup(""));
+}
+
 void	set_new_indexes(int *i, int *j, t_struct *s)
 {
 	s->i_n_quotes = 0;

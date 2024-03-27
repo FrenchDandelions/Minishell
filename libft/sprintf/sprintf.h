@@ -6,7 +6,7 @@
 /*   By: thole <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 14:46:54 by thole             #+#    #+#             */
-/*   Updated: 2023/11/14 12:08:44 by thole            ###   ########.fr       */
+/*   Updated: 2024/03/27 15:10:48 by andrew           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,15 @@
 # define SPRINTF_H
 
 # include "../libft.h"
+# include <stdlib.h>
+
+typedef struct s_sprintf
+{
+	size_t	length;
+	size_t	pos;
+	size_t	i;
+	char	*string;
+}			t_sprintf;
 
 int	ft_sprintf_strdup(const char *s, char **str);
 int	ft_sprintf_strdup2(char **str);
