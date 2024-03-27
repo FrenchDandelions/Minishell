@@ -1,3 +1,3 @@
-This is my Minishell, I have a few stuff to fix on my echo but it's finally done ;)
+This is my Minishell, it's finally done ;)
 
 Have fun with it ! :)
